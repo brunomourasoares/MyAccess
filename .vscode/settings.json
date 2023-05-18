@@ -1,0 +1,4 @@
+{
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.jdt.ls.vmargs": "-Dwebcam.debug=true -Dbridj.debug=true -Dbridj.veryVerbose=true -Dbridj.verbose=true"
+}
