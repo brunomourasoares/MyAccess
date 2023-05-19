@@ -18,6 +18,7 @@ public class UserDAO {
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet result;
+    private Integer id;
 	
 	public void createGuest(Guest guest) {
 		
@@ -33,18 +34,14 @@ public class UserDAO {
             pstmt.setTimestamp(6, guest.getCreateDate());
             pstmt.setString(7, guest.getObservations());
             pstmt.setBoolean(8, guest.getBlocked());
-                        
-            int rowsAffected = pstmt.executeUpdate();
-			
-			if (rowsAffected > 0) {
-				ResultSet rs = pstmt.getGeneratedKeys();
-				if (rs.next()) {
-					int id = rs.getInt(1);
-					guest.setId(id);
-				}
-				rs.close();
-			}
+            pstmt.execute();
+            result = pstmt.getGeneratedKeys();
 
+            while (result.next()) {
+                id = result.getInt(1);
+            }
+
+            result.close();
 	        pstmt.close();
 	        conn.close();
         }
@@ -104,17 +101,14 @@ public class UserDAO {
             pstmt.setString(5, entry.getPerson());
             pstmt.setTimestamp(6, entry.getDate());
             pstmt.setString(7, entry.getType());
-                        
-            int rowsAffected = pstmt.executeUpdate();
-			
-			if (rowsAffected > 0) {
-				result = pstmt.getGeneratedKeys();
-				if (result.next()) {
-					int id = result.getInt(1);
-					entry.setId(id);
-				}
-				result.close();
-			}
+            pstmt.execute();
+            result = pstmt.getGeneratedKeys();
+
+            while (result.next()) {
+                id = result.getInt(1);
+            }
+
+            result.close();
 	        pstmt.close();
 	        conn.close();
         }
@@ -136,17 +130,14 @@ public class UserDAO {
             pstmt.setString(5, exit.getPerson());
             pstmt.setTimestamp(6, exit.getDate());
             pstmt.setString(7, exit.getType());
-	        
-            int rowsAffected = pstmt.executeUpdate();
-			
-			if (rowsAffected > 0) {
-				result = pstmt.getGeneratedKeys();
-				if (result.next()) {
-					int id = result.getInt(1);
-					exit.setId(id);
-				}
-				result.close();
-			}
+	        pstmt.execute();
+            result = pstmt.getGeneratedKeys();
+
+            while (result.next()) {
+                id = result.getInt(1);
+            }
+
+            result.close();
 	        pstmt.close();
 	        conn.close();
         }
@@ -354,7 +345,7 @@ public class UserDAO {
 			pstmt = conn.prepareStatement(updateSQL);
 			pstmt.setString(1, aes256.encrypt(newPassword));
 			pstmt.setString(2, username);
-			pstmt.execute();
+            pstmt.executeUpdate();
 			pstmt.close();
 			conn.close();
 		}
@@ -371,7 +362,7 @@ public class UserDAO {
             pstmt = conn.prepareStatement(updateSQL);
             pstmt.setBoolean(1, loggedStatus);
             pstmt.setString(2, username);
-			pstmt.executeUpdate();
+            pstmt.executeUpdate();
             pstmt.close();
             conn.close();
 		}

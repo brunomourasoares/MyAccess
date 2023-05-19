@@ -34,7 +34,7 @@ public class AdminDAO extends UserDAO {
             pstmt.setString(6, user.getQuestion());
             pstmt.setString(7, user.getAnswer());
             pstmt.setBoolean(8, false);
-            pstmt.execute();
+            pstmt.executeUpdate();
 	        pstmt.close();
 	        conn.close();
         }
