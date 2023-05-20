@@ -30,11 +30,11 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -85,7 +85,7 @@ public class UpdateController implements Initializable {
     @FXML
     private Label lblErrors;
     @FXML
-    private CheckBox ckbBlock;
+    private ToggleButton tbBlock;
     @FXML
     private Button btUpdate;
     @FXML
@@ -133,7 +133,7 @@ public class UpdateController implements Initializable {
         txtContactNumber.setDisable(true);
         txtCompanyName.setDisable(true);
         txaObservation.setDisable(true);
-        ckbBlock.setDisable(true);
+        tbBlock.setDisable(true);
         btOpenWebcam.setDisable(true);
         btSavePhoto.setDisable(true);
         btUpdate.setDisable(true);
@@ -351,7 +351,7 @@ public class UpdateController implements Initializable {
 	        txtContactNumber.setDisable(false);
 	        txtCompanyName.setDisable(false);
 	        txaObservation.setDisable(false);
-	        ckbBlock.setDisable(false);
+	        tbBlock.setDisable(false);
 	        btSavePhoto.setDisable(false);
 	        btUpdate.setDisable(false);
 	        btClear.setDisable(false);
@@ -363,7 +363,7 @@ public class UpdateController implements Initializable {
 		    txtContactNumber.setText(guest.getContactNumber());
 		    txtCompanyName.setText(guest.getCompanyName());
 		    txaObservation.setText(guest.getObservations());
-		    ckbBlock.setSelected(guest.getBlocked());
+            tbBlock.setSelected(guest.getBlocked());
             initializeWebCam();
 	        ioUtil.displayImage(txtSSN.getText(), ivWebcam2);
 		    guiUtil.setLblError(lblErrors, Color.RED, "");
@@ -378,7 +378,7 @@ public class UpdateController implements Initializable {
 	    String contactNumber = txtContactNumber.getText();
 	    String companyName = txtCompanyName.getText();
 	    String observation = txaObservation.getText();
-	    Boolean block = ckbBlock.isSelected();
+	    Boolean block = tbBlock.isSelected();
 	    
 	    if(fullname.isEmpty()) {
 	    	guiUtil.setLblError(lblErrors, Color.RED, "Full name: is blank!");
@@ -414,12 +414,12 @@ public class UpdateController implements Initializable {
         txtContactNumber.setDisable(true);
         txtCompanyName.setDisable(true);
         txaObservation.setDisable(true);
-        ckbBlock.setSelected(false);
+        tbBlock.setSelected(false);
         ivWebcam.setVisible(false);
         ivWebcam2.setVisible(false);
         btOpenWebcam.setDisable(true);
         btSavePhoto.setDisable(true);
-        ckbBlock.setDisable(true);
+        tbBlock.setDisable(true);
         btUpdate.setDisable(true);
         btClear.setDisable(true);
     	txtSSN.setText("");

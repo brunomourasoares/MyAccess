@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
-<?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import com.jfoenix.controls.JFXToggleButton?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.ImageView?>
@@ -14,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.myaccess.Controllers.UpdateController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.myaccess.Controllers.EntryController">
    <top>
       <Pane prefHeight="250.0" prefWidth="1024.0" styleClass="main_white_background" stylesheets="@gui/stylesheet.css" BorderPane.alignment="CENTER" />
    </top>
@@ -30,7 +26,7 @@
    <center>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" styleClass="main_white_background" stylesheets="@gui/stylesheet.css" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="14.0" layoutY="14.0" prefHeight="35.0" prefWidth="65.0" styleClass="main_white_letters" stylesheets="@gui/stylesheet.css" text="Update">
+            <Label layoutX="14.0" layoutY="14.0" prefHeight="35.0" prefWidth="50.0" styleClass="main_white_letters" stylesheets="@gui/stylesheet.css" text="Entry">
                <font>
                   <Font size="20.0" />
                </font>
@@ -40,6 +36,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
+            <Label fx:id="lblErrors" layoutX="130.0" layoutY="150.0" prefHeight="18.0" prefWidth="350.0" />
             <JFXButton fx:id="btHome" buttonType="RAISED" layoutX="40.0" layoutY="60.0" prefHeight="25.0" prefWidth="115.0" styleClass="button_fixed" stylesheets="@gui/stylesheet.css" text="HOME" />
             <JFXButton fx:id="btReports" buttonType="RAISED" disable="true" layoutX="160.0" layoutY="60.0" onMouseClicked="#reportsButtonMouseClick" prefHeight="25.0" prefWidth="115.0" styleClass="button_normal" stylesheets="@gui/stylesheet.css" text="REPORTS" />
             <JFXButton fx:id="btOptions" buttonType="RAISED" disable="true" layoutX="280.0" layoutY="60.0" onMouseClicked="#optionsButtonMouseClick" prefHeight="25.0" prefWidth="115.0" styleClass="button_normal" stylesheets="@gui/stylesheet.css" text="OPTIONS" />
@@ -47,56 +44,31 @@
             <JFXButton fx:id="btAbout" buttonType="RAISED" disable="true" layoutX="520.0" layoutY="60.0" onMouseClicked="#aboutButtonMouseClick" prefHeight="25.0" prefWidth="115.0" styleClass="button_normal" stylesheets="@gui/stylesheet.css" text="ABOUT" />
             <JFXButton fx:id="btLogout" buttonType="RAISED" layoutX="910.0" layoutY="60.0" onMouseClicked="#logoutButtonMouseClick" prefHeight="25.0" prefWidth="75.0" styleClass="button_normal" stylesheets="@gui/stylesheet.css" text="LOGOUT" />
             <JFXButton fx:id="btRegister" layoutX="40.0" layoutY="100.0" onMouseClicked="#registerButtonMouseClick" prefHeight="35.0" prefWidth="115.0" styleClass="button_big" stylesheets="@gui/stylesheet.css" text="REGISTER" />
-            <JFXButton fx:id="btUpdt" layoutX="160.0" layoutY="100.0" prefHeight="35.0" prefWidth="115.0" styleClass="button_big_fixed" stylesheets="@gui/stylesheet.css" text="UPDATE" />
+            <JFXButton fx:id="btUpdate" layoutX="160.0" layoutY="100.0" onMouseClicked="#updateButtonMouseClick" prefHeight="35.0" prefWidth="115.0" styleClass="button_big" stylesheets="@gui/stylesheet.css" text="UPDATE" />
             <JFXButton fx:id="btDelete" layoutX="280.0" layoutY="100.0" onMouseClicked="#deleteButtonMouseClick" prefHeight="35.0" prefWidth="115.0" styleClass="button_big" stylesheets="@gui/stylesheet.css" text="DELETE" />
-            <JFXButton fx:id="btEntry" layoutX="400.0" layoutY="100.0" onMouseClicked="#entryButtonMouseClick" prefHeight="35.0" prefWidth="115.0" styleClass="button_big" stylesheets="@gui/stylesheet.css" text="ENTRY" />
+            <JFXButton fx:id="btEnt" layoutX="400.0" layoutY="100.0" prefHeight="35.0" prefWidth="115.0" styleClass="button_big_fixed" stylesheets="@gui/stylesheet.css" text="ENTRY" />
             <JFXButton fx:id="btExit" layoutX="520.0" layoutY="100.0" onMouseClicked="#exitButtonMouseClick" prefHeight="35.0" prefWidth="115.0" styleClass="button_big" stylesheets="@gui/stylesheet.css" text="EXIT" />
-            <Label fx:id="lblErrors" layoutX="130.0" layoutY="150.0" prefHeight="18.0" prefWidth="246.0" />
             <JFXTextField fx:id="txtSSN" focusColor="#38b6ff" labelFloat="true" layoutX="130.0" layoutY="180.0" onKeyPressed="#ssnEnterKeyPressing" prefHeight="26.0" prefWidth="280.0" promptText="SSN (Required)" styleClass="main_fields" stylesheets="@gui/stylesheet.css">
                <tooltip>
                   <Tooltip text="SSN: only numbers!" />
                </tooltip>
             </JFXTextField>
             <JFXButton fx:id="btSearch" buttonType="RAISED" layoutX="45.0" layoutY="180.0" onMouseClicked="#searchButtonMouseClick" prefHeight="30.0" prefWidth="74.0" styleClass="button_normal" stylesheets="@gui/stylesheet.css" text="SEARCH" />
-            <JFXTextField fx:id="txtFullName" focusColor="#38b6ff" labelFloat="true" layoutX="130.0" layoutY="230.0" prefHeight="26.0" prefWidth="280.0" promptText="Full name (Required)" styleClass="main_fields" stylesheets="@gui/stylesheet.css">
+            <JFXTextField fx:id="txtVehicleModel" focusColor="#38b6ff" labelFloat="true" layoutX="130.0" layoutY="230.0" prefHeight="26.0" prefWidth="280.0" promptText="Vehicle Model" styleClass="main_fields" stylesheets="@gui/stylesheet.css">
                <tooltip>
-                  <Tooltip text="Full Name: only letters!" />
+                  <Tooltip text="Vehicle model: only letters and numbers!" />
                </tooltip>
             </JFXTextField>
-            <JFXComboBox fx:id="cbGender" focusColor="#38b6ff" labelFloat="true" layoutX="130.0" layoutY="280.0" prefHeight="26.0" prefWidth="280.0" promptText="Choose a gender (Required)" styleClass="main_fields" stylesheets="@gui/stylesheet.css">
+            <JFXTextField fx:id="txtVehiclePlate" focusColor="#38b6ff" labelFloat="true" layoutX="130.0" layoutY="280.0" prefHeight="26.0" prefWidth="280.0" promptText="Vehicle plate" styleClass="main_fields" stylesheets="@gui/stylesheet.css">
                <tooltip>
-                  <Tooltip text="Choose one option!" />
-               </tooltip>
-            </JFXComboBox>
-            <JFXTextField fx:id="txtContactNumber" focusColor="#38b6ff" labelFloat="true" layoutX="130.0" layoutY="330.0" prefHeight="26.0" prefWidth="280.0" promptText="Contact number (Required)" styleClass="main_fields" stylesheets="@gui/stylesheet.css">
-               <tooltip>
-                  <Tooltip text="Contact number: only numbers!" />
+                  <Tooltip text="Vehicle plate: only letters and numbers!" />
                </tooltip>
             </JFXTextField>
-            <JFXTextField fx:id="txtCompanyName" focusColor="#38b6ff" labelFloat="true" layoutX="130.0" layoutY="380.0" prefHeight="26.0" prefWidth="280.0" promptText="Company" styleClass="main_fields" stylesheets="@gui/stylesheet.css">
-               <tooltip>
-                  <Tooltip text="Company: only letters and numbers!" />
-               </tooltip>
-            </JFXTextField>
-            <JFXTextArea fx:id="txaObservation" focusColor="#38b6ff" labelFloat="true" layoutX="130.0" layoutY="430.0" prefHeight="98.0" prefWidth="280.0" promptText="Observations" style="-fx-padding: 1.5;" styleClass="main_fields" stylesheets="@gui/stylesheet.css">
-               <tooltip>
-                  <Tooltip opacity="0.0" text="Observations: No restrictions!" />
-               </tooltip>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </JFXTextArea>
-            <ImageView fx:id="ivWebcam" fitHeight="350.0" fitWidth="500.0" layoutX="436.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="ivWebcam2" fitHeight="350.0" fitWidth="500.0" layoutX="436.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" />
-            <JFXButton fx:id="btOpenWebcam" buttonType="RAISED" layoutX="555.0" layoutY="550.0" onMouseClicked="#openWebcamButtonMouseClick" prefHeight="25.0" prefWidth="115.0" styleClass="button_normal" stylesheets="@gui/stylesheet.css" text="OPEN WEBCAM" />
-            <JFXButton fx:id="btSavePhoto" buttonType="RAISED" layoutX="705.0" layoutY="550.0" onMouseClicked="#savePhotoButtonMouseClick" prefHeight="25.0" prefWidth="115.0" styleClass="button_normal" stylesheets="@gui/stylesheet.css" text="REPLACE PHOTO" />
-            <JFXButton fx:id="btUpdate" buttonType="RAISED" layoutX="175.0" layoutY="600.0" onMouseClicked="#updateButtonMouseClick" prefHeight="25.0" prefWidth="75.0" styleClass="button_normal" stylesheets="@gui/stylesheet.css" text="UPDATE" />
-            <JFXButton fx:id="btClear" buttonType="RAISED" layoutX="292.0" layoutY="600.0" onMouseClicked="#clearButtonMouseClick" prefHeight="25.0" prefWidth="75.0" styleClass="button_normal" stylesheets="@gui/stylesheet.css" text="CLEAR" />
-            <JFXToggleButton fx:id="tbBlock" contentDisplay="RIGHT" layoutX="125.0" layoutY="540.0" size="8.0" stylesheets="@gui/stylesheet.css" text="Block guest" textFill="#4d4d4d" toggleColor="#e80808" toggleLineColor="#ff6464" unToggleColor="WHITE" unToggleLineColor="#757575">
-               <font>
-                  <Font name="Roboto Bold" size="12.0" />
-               </font>
-            </JFXToggleButton>
+            <JFXTextField fx:id="txtDestination" focusColor="#38b6ff" labelFloat="true" layoutX="130.0" layoutY="330.0" prefHeight="26.0" prefWidth="280.0" promptText="Destination (Required)" styleClass="main_fields" stylesheets="@gui/stylesheet.css" />
+            <JFXTextField fx:id="txtPerson" focusColor="#38b6ff" labelFloat="true" layoutX="130.0" layoutY="380.0" prefHeight="26.0" prefWidth="280.0" promptText="Person (Required)" styleClass="main_fields" stylesheets="@gui/stylesheet.css" />
+            <JFXButton fx:id="btEntry" buttonType="RAISED" layoutX="175.0" layoutY="430.0" onMouseClicked="#entryButtonMouseClick" prefHeight="25.0" prefWidth="75.0" styleClass="button_normal" stylesheets="@gui/stylesheet.css" text="ENTRY" />
+            <JFXButton fx:id="btClear" buttonType="RAISED" layoutX="292.0" layoutY="430.0" onMouseClicked="#clearButtonMouseClick" prefHeight="25.0" prefWidth="75.0" styleClass="button_normal" stylesheets="@gui/stylesheet.css" text="CLEAR" />
+            <ImageView fx:id="ivPhoto" fitHeight="350.0" fitWidth="500.0" layoutX="436.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
    </center>
