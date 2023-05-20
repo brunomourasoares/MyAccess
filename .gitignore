@@ -1,0 +1,10 @@
+# VS Code
+.vscode/
+target/
+src/main/resources/com/myaccess/guest/*.jpg
+
+# Compiled class file
+*.class
+
+# Log file
+*.log
