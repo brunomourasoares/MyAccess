@@ -157,7 +157,7 @@ public class RegisterController implements Initializable {
             catch (IOException e) {
             	e.printStackTrace();
             }
-            protectUnknownPhoto();
+            ioUtil.protectUnknownPhoto(txtSSN);
         }
     }
 
@@ -171,7 +171,7 @@ public class RegisterController implements Initializable {
             catch (IOException e) {
             	e.printStackTrace();
             }
-            protectUnknownPhoto();
+            ioUtil.protectUnknownPhoto(txtSSN);
         }
     }
 
@@ -185,7 +185,7 @@ public class RegisterController implements Initializable {
             catch (IOException e) {
             	e.printStackTrace();
             }
-            protectUnknownPhoto();
+            ioUtil.protectUnknownPhoto(txtSSN);
         }
     }
 
@@ -199,7 +199,7 @@ public class RegisterController implements Initializable {
             catch (IOException e) {
             	e.printStackTrace();
             }
-            protectUnknownPhoto();
+            ioUtil.protectUnknownPhoto(txtSSN);
         }
     }
     
@@ -213,7 +213,7 @@ public class RegisterController implements Initializable {
             catch (IOException e) {
                 e.printStackTrace();
             }
-            protectUnknownPhoto();
+            ioUtil.protectUnknownPhoto(txtSSN);
         }
     }
 
@@ -227,7 +227,7 @@ public class RegisterController implements Initializable {
             catch (IOException e) {
             	e.printStackTrace();
             }
-            protectUnknownPhoto();
+            ioUtil.protectUnknownPhoto(txtSSN);
         }
     }
 
@@ -241,7 +241,7 @@ public class RegisterController implements Initializable {
             catch (IOException e) {
             	e.printStackTrace();
             }
-            protectUnknownPhoto();
+            ioUtil.protectUnknownPhoto(txtSSN);
         }
     }
 
@@ -255,7 +255,7 @@ public class RegisterController implements Initializable {
             catch (IOException e) {
             	e.printStackTrace();
             }
-            protectUnknownPhoto();
+            ioUtil.protectUnknownPhoto(txtSSN);
         }
     }
 
@@ -269,7 +269,7 @@ public class RegisterController implements Initializable {
             catch (IOException e) {
             	e.printStackTrace();
             }
-            protectUnknownPhoto();
+            ioUtil.protectUnknownPhoto(txtSSN);
         }
     }
     
@@ -386,7 +386,7 @@ public class RegisterController implements Initializable {
 	    	guiUtil.setLblError(lblErrors, Color.RED, "Photo: you need save photo!");
 	    }
 	    else {
-	    	Guest guest = new Guest(1, ssn, fullname, gender, contactNumber, companyName, date, observation, block);
+	    	Guest guest = new Guest(null, ssn, fullname, gender, contactNumber, companyName, date, observation, block);
 	    	userDAO.createGuest(guest);
 	    	clearFields();
 	    	guiUtil.setLblError(lblErrors, Color.GREEN, "New Guest has been CREATED!");
@@ -408,7 +408,7 @@ public class RegisterController implements Initializable {
         btSavePhoto.setDisable(true);
         btRegister.setDisable(true);
         btClear.setDisable(true);
-    	protectUnknownPhoto();
+    	ioUtil.protectUnknownPhoto(txtSSN);
     	txtSSN.setText("");
     	txtFullName.setText("");
     	cbGender.getSelectionModel().clearSelection();
@@ -500,21 +500,4 @@ public class RegisterController implements Initializable {
 		btOpenWebcam.setDisable(false);
 		btSavePhoto.setDisable(true);
 	}
-	
-	private void protectUnknownPhoto() {
-		
-        if (userDAO.findGuestBySSN(txtSSN.getText()) == false && ioUtil.existFile(txtSSN.getText()) == true) {
-        	ioUtil.deletePhoto(txtSSN.getText());
-        }
-	}
-
-    /*public void initClock() {
-        Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> { 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-        lblTime.setText(LocalDateTime.now().format(formatter));
-	}
-	), new KeyFrame(Duration.seconds(0.8)));
-        clock.setCycleCount(Animation.INDEFINITE);
-        clock.play();
-    }*/
 }

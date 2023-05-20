@@ -241,7 +241,7 @@ public class EntryController implements Initializable {
     private void ssnEnterKeyPressing(KeyEvent event) {
     	
         if (event.getCode() == KeyCode.ENTER) {
-        	getGuest();
+        	getEntryGuest();
         }
     }
     
@@ -249,7 +249,7 @@ public class EntryController implements Initializable {
     private void searchButtonMouseClick(MouseEvent event) {
     	
     	if (event.getSource() == btSearch) {
-    		getGuest();
+    		getEntryGuest();
     	}
     }
     
@@ -272,7 +272,7 @@ public class EntryController implements Initializable {
     	guiUtil.setLblError(lblErrors, Color.RED, "");
     }
     
-    private void getGuest() {
+    private void getEntryGuest() {
       	
 	    if (txtSSN.getText().isEmpty()) {
 	    	guiUtil.setLblError(lblErrors, Color.RED, "SSN: is blank!");

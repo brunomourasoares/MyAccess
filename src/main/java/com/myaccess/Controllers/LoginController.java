@@ -15,6 +15,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -23,11 +25,15 @@ import javafx.scene.paint.Color;
 public class LoginController implements Initializable {
 
     @FXML
-    private TextField txtLogin;
+    private TextField txtUsername;
     @FXML
     private PasswordField pfPassword;
     @FXML
+    private TextField pfPassword2;
+    @FXML
     private Button btShowPassword;
+    @FXML
+    private ImageView ivShowPassword;
     @FXML
     private Button btLogin;
     @FXML
@@ -44,10 +50,10 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     	
-        constraints.setTextFieldLettersNumbers(txtLogin);
-        constraints.setTextFieldMaxLength(txtLogin, 15);
+        constraints.setTextFieldLettersNumbers(txtUsername);
+        constraints.setTextFieldMaxLength(txtUsername, 45);
         constraints.setPasswordFieldLettersNumbers(pfPassword);
-        constraints.setPasswordFieldMaxLength(pfPassword, 15);
+        constraints.setPasswordFieldMaxLength(pfPassword, 20);
     }
 
     @FXML
@@ -81,7 +87,7 @@ public class LoginController implements Initializable {
 
     private void loginCheck() {
     	
-        String username = txtLogin.getText();
+        String username = txtUsername.getText();
         String password = pfPassword.getText();
         
         if (username.isEmpty()) {
@@ -108,21 +114,23 @@ public class LoginController implements Initializable {
         }
     }
     
- // ======================= ADAPTADO ============================
-    
-    private String backup = new String();
-    private void copyPass() {
-        backup = pfPassword.getText();
-    }
-    
+ // ============================= Adapted ===================================
+
     public void showPasswordPressed() {
-        copyPass();
-        pfPassword.setPromptText(pfPassword.getText());
-        pfPassword.setText("");
+
+        Image img = new Image(LoginController.class.getResourceAsStream("/com/myaccess/gui/eye-slash.png"));
+        ivShowPassword.setImage(img);
+        pfPassword2.setText(pfPassword.getText());
+        pfPassword.setVisible(false);
+        pfPassword2.setVisible(true);
     }
 
     public void showPasswordReleased() {
-        pfPassword.setText(backup);
-        pfPassword.setPromptText("Password:");
+
+        Image img = new Image(LoginController.class.getResourceAsStream("/com/myaccess/gui/eye.png"));
+        ivShowPassword.setImage(img);
+        pfPassword.setText(pfPassword2.getText());
+        pfPassword2.setVisible(false);
+        pfPassword.setVisible(true);
     }
 }

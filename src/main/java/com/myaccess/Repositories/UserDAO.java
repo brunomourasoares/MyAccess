@@ -18,8 +18,7 @@ public class UserDAO {
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet result;
-    private Integer id;
-	
+
 	public void createGuest(Guest guest) {
 		
         String insertSQL = "INSERT INTO tb_guest (ssn, fullname, gender, contact_number, company_name, create_date, observations, blocked) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -36,11 +35,6 @@ public class UserDAO {
             pstmt.setBoolean(8, guest.getBlocked());
             pstmt.execute();
             result = pstmt.getGeneratedKeys();
-
-            while (result.next()) {
-                id = result.getInt(1);
-            }
-
             result.close();
 	        pstmt.close();
 	        conn.close();
@@ -103,11 +97,6 @@ public class UserDAO {
             pstmt.setString(7, entry.getType());
             pstmt.execute();
             result = pstmt.getGeneratedKeys();
-
-            while (result.next()) {
-                id = result.getInt(1);
-            }
-
             result.close();
 	        pstmt.close();
 	        conn.close();
@@ -132,11 +121,6 @@ public class UserDAO {
             pstmt.setString(7, exit.getType());
 	        pstmt.execute();
             result = pstmt.getGeneratedKeys();
-
-            while (result.next()) {
-                id = result.getInt(1);
-            }
-
             result.close();
 	        pstmt.close();
 	        conn.close();
@@ -156,7 +140,7 @@ public class UserDAO {
 	        result = pstmt.executeQuery();
 
 	        if (result.next()) {
-	        	Guest guest = new Guest(result.getInt(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5), result.getString(6),result.getTimestamp(7), result.getString(8), result.getBoolean(9));
+                Guest guest = new Guest(result.getLong(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5), result.getString(6),result.getTimestamp(7), result.getString(8), result.getBoolean(9));
 	            return guest;
 	        }
 
@@ -203,7 +187,7 @@ public class UserDAO {
             result = pstmt.executeQuery();
 
             if (result.next()) {
-                FlowEE entry = new FlowEE(result.getInt(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5), result.getString(6), result.getTimestamp(7), result.getString(8));
+                FlowEE entry = new FlowEE(result.getLong(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5), result.getString(6), result.getTimestamp(7), result.getString(8));
                 return entry;
             }
 

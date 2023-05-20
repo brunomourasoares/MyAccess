@@ -173,7 +173,6 @@ public class DeleteController implements Initializable {
         }
     }
     
-        
     @FXML
     private void updateButtonMouseClick(MouseEvent event) {
     	
@@ -212,13 +211,6 @@ public class DeleteController implements Initializable {
             }
         }
     }
-    @FXML
-    private void deleteButtonMouseClick(MouseEvent event) {
-    	
-        if (event.getSource() == btDelete) {
-        	deleteGuest();
-        }
-    }
     
     @FXML
     private void searchButtonMouseClick(MouseEvent event) {
@@ -236,6 +228,14 @@ public class DeleteController implements Initializable {
         }
     }
     
+    @FXML
+    private void deleteButtonMouseClick(MouseEvent event) {
+    	
+        if (event.getSource() == btDelete) {
+        	setDeleteGuest();
+        }
+    }
+
     @FXML
     private void clearButtonMouseClick(MouseEvent event) {
         if (event.getSource() == btClear) {
@@ -272,7 +272,7 @@ public class DeleteController implements Initializable {
 	    }
     }
     
-    private void deleteGuest() {
+    private void setDeleteGuest() {
 
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setHeaderText("DELETING...");

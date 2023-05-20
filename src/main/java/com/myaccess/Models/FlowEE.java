@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class FlowEE {
 	
-	private Integer id;
+	private Long id;
 	private String ssn;
 	private String vehicleModel;
 	private String vehiclePlate;
@@ -13,7 +13,7 @@ public class FlowEE {
 	private Timestamp date;
 	private String type;
 	
-	public FlowEE(Integer id, String ssn, String vehicleModel, String vehiclePlate, String destination, String person, Timestamp date,	String type) {
+	public FlowEE(Long id, String ssn, String vehicleModel, String vehiclePlate, String destination, String person, Timestamp date,	String type) {
 		this.id = id;
 		this.ssn = ssn;
 		this.vehicleModel = vehicleModel;
@@ -24,11 +24,11 @@ public class FlowEE {
 		this.type = type;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 	
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	

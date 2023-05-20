@@ -92,20 +92,6 @@
   -fx-font-size: 18px;
 }
 
-.showHide {
-  -fx-background-position: right 4px center;
-  -fx-background-size: 14;
-  -fx-background-repeat: no-repeat;
-  -fx-background-image: url("eye-slash.png");
-}
-
-.showHide:hover {
-  -fx-background-position: right 4px center;
-  -fx-background-size: 14;
-  -fx-background-repeat: no-repeat;
-  -fx-background-image: url("eye.png");
-}
-
 .login_label {
   -fx-text-fill: #38B6FF;
   -fx-background-color: #F8FAFB;

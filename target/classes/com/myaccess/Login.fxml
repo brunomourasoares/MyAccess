@@ -51,7 +51,7 @@
             </Label>
             <Label layoutX="601.0" layoutY="322.0" prefHeight="15.0" prefWidth="170.0" styleClass="main_white_letters" stylesheets="@gui/stylesheet.css" text="protecting what really matters" />
             <Label fx:id="lblErrors" layoutX="600.0" layoutY="355.0" prefHeight="20.0" prefWidth="270.0" stylesheets="@gui/stylesheet.css" />
-            <JFXTextField fx:id="txtLogin" focusColor="#38b6ff" labelFloat="true" layoutX="600.0" layoutY="390.0" prefHeight="30.0" prefWidth="270.0" promptText="Username:" styleClass="main_fields" stylesheets="@gui/stylesheet.css">
+            <JFXTextField fx:id="txtUsername" focusColor="#38b6ff" labelFloat="true" layoutX="600.0" layoutY="390.0" prefHeight="30.0" prefWidth="270.0" promptText="Username:" styleClass="main_fields" stylesheets="@gui/stylesheet.css">
                <tooltip>
                   <Tooltip text="Username: only letters and numbers!" />
                </tooltip>
@@ -61,10 +61,22 @@
                   <Tooltip text="Password: only letters and numbers!" />
                </tooltip>
             </JFXPasswordField>
-            <Button fx:id="btShowPassword" layoutX="843.0" layoutY="450.0" mnemonicParsing="false" onMousePressed="#showPasswordPressed" onMouseReleased="#showPasswordReleased" prefHeight="30.0" prefWidth="25.0" style="-fx-background-color: E6EDF0;" styleClass="showHide" stylesheets="@gui/stylesheet.css">
+            <JFXTextField fx:id="pfPassword2" focusColor="#38b6ff" labelFloat="true" layoutX="600.0" layoutY="450.0" onKeyPressed="#passwordEnterKeyPressing" prefHeight="30.0" prefWidth="270.0" promptText="Password:" styleClass="main_fields" stylesheets="@gui/stylesheet.css" visible="false">
+               <tooltip>
+                  <Tooltip text="Password: only letters and numbers!" />
+               </tooltip>
+            </JFXTextField>
+            <Button fx:id="btShowPassword" layoutX="834.0" layoutY="454.0" mnemonicParsing="false" onMousePressed="#showPasswordPressed" onMouseReleased="#showPasswordReleased" prefHeight="20.0" prefWidth="20.0" style="-fx-background-color: #F1F3F4;">
                <tooltip>
                   <Tooltip text="Show password!" />
-               </tooltip></Button>
+               </tooltip>
+               <graphic>
+                  <ImageView fx:id="ivShowPassword" fitHeight="21.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@gui/eye.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
             <JFXButton fx:id="btLogin" buttonType="RAISED" layoutX="600.0" layoutY="500.0" onMouseClicked="#loginButtonMouseClick" prefHeight="25.0" prefWidth="135.0" ripplerFill="#38b6ff" styleClass="button_normal" stylesheets="@gui/stylesheet.css" text="LOGIN" />
             <JFXButton fx:id="btForgot" buttonType="RAISED" layoutX="740.0" layoutY="500.0" onMouseClicked="#forgotButtonMouseClick" prefHeight="25.0" prefWidth="135.0" ripplerFill="#38b6ff" styleClass="button_normal" stylesheets="@gui/stylesheet.css" text="FORGOT PASSWORD" />
          </children>

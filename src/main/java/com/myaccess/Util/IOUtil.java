@@ -6,10 +6,15 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import com.myaccess.Repositories.UserDAO;
+
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class IOUtil {
+
+	UserDAO userDAO = new UserDAO();
 
 	public boolean deletePhoto(String ssn) {
 		
@@ -44,5 +49,12 @@ public class IOUtil {
 		else {
 			return false;
 		}
+	}
+
+	public void protectUnknownPhoto(TextField txtSSN) {
+		
+        if (userDAO.findGuestBySSN(txtSSN.getText()) == false && existFile(txtSSN.getText()) == true) {
+        	deletePhoto(txtSSN.getText());
+        }
 	}
 }

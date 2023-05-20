@@ -246,7 +246,7 @@ public class ExitController implements Initializable {
     private void ssnEnterKeyPressing(KeyEvent event) {
     	
         if (event.getCode() == KeyCode.ENTER) {
-        	getGuest();
+        	getExitGuest();
         }
     }
     
@@ -254,7 +254,7 @@ public class ExitController implements Initializable {
     private void searchButtonMouseClick(MouseEvent event) {
     	
     	if (event.getSource() == btSearch) {
-    		getGuest();
+    		getExitGuest();
     	}
     }
     
@@ -278,7 +278,7 @@ public class ExitController implements Initializable {
     	guiUtil.setLblError(lblErrors, Color.RED, "");
     }
     
-    private void getGuest() {
+    private void getExitGuest() {
       	
 	    FlowEE exit = userDAO.getLastFlowBySSN(txtSSN.getText());
 

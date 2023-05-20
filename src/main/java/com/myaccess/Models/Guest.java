@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class Guest {
 
-	private Integer id;
+	private Long id;
     private String sSN;
     private String fullName;
     private String gender;
@@ -14,7 +14,7 @@ public class Guest {
     private String observations;
 	private Boolean blocked;
 
-    public Guest(Integer id, String sSN, String fullName, String gender, String contactNumber, String companyName, Timestamp createDate, String observations, Boolean blocked) {
+    public Guest(Long id, String sSN, String fullName, String gender, String contactNumber, String companyName, Timestamp createDate, String observations, Boolean blocked) {
     	this.id = id;
         this.sSN = sSN;
         this.fullName = fullName;
@@ -26,11 +26,11 @@ public class Guest {
         this.blocked = blocked;
     }
 
-	public Integer  getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer  id) {
+	public void setId(Long  id) {
 		this.id = id;
 	}
 

@@ -162,7 +162,7 @@ public class UpdateController implements Initializable {
             catch (IOException e) {
             	e.printStackTrace();
             }
-            protectUnknownPhoto();
+            ioUtil.protectUnknownPhoto(txtSSN);
         }
     }
 
@@ -176,7 +176,7 @@ public class UpdateController implements Initializable {
             catch (IOException e) {
             	e.printStackTrace();
             }
-            protectUnknownPhoto();
+            ioUtil.protectUnknownPhoto(txtSSN);
         }
     }
 
@@ -190,7 +190,7 @@ public class UpdateController implements Initializable {
             catch (IOException e) {
             	e.printStackTrace();
             }
-            protectUnknownPhoto();
+            ioUtil.protectUnknownPhoto(txtSSN);
         }
     }
 
@@ -204,7 +204,7 @@ public class UpdateController implements Initializable {
             catch (IOException e) {
             	e.printStackTrace();
             }
-            protectUnknownPhoto();
+            ioUtil.protectUnknownPhoto(txtSSN);
         }
     }
     
@@ -218,7 +218,7 @@ public class UpdateController implements Initializable {
             catch (IOException e) {
                 e.printStackTrace();
             }
-            protectUnknownPhoto();
+            ioUtil.protectUnknownPhoto(txtSSN);
         }
     }
 
@@ -232,7 +232,7 @@ public class UpdateController implements Initializable {
             catch (IOException e) {
                 e.printStackTrace();
             }
-            protectUnknownPhoto();
+            ioUtil.protectUnknownPhoto(txtSSN);
         }
     }
 
@@ -246,7 +246,7 @@ public class UpdateController implements Initializable {
             catch (IOException e) {
                 e.printStackTrace();
             }
-            protectUnknownPhoto();
+            ioUtil.protectUnknownPhoto(txtSSN);
         }
     }
 
@@ -260,7 +260,7 @@ public class UpdateController implements Initializable {
             catch (IOException e) {
                 e.printStackTrace();
             }
-            protectUnknownPhoto();
+            ioUtil.protectUnknownPhoto(txtSSN);
         }
     }
 
@@ -274,7 +274,7 @@ public class UpdateController implements Initializable {
             catch (IOException e) {
                 e.printStackTrace();
             }
-            protectUnknownPhoto();
+            ioUtil.protectUnknownPhoto(txtSSN);
         }
     }
     
@@ -306,7 +306,7 @@ public class UpdateController implements Initializable {
     private void openWebcamButtonMouseClick(MouseEvent event) {
     	
         if (event.getSource() == btOpenWebcam) {
-        	startWebCamCamera();
+                startWebCamCamera();
         }
     }
     
@@ -352,6 +352,7 @@ public class UpdateController implements Initializable {
 	        txtCompanyName.setDisable(false);
 	        txaObservation.setDisable(false);
 	        tbBlock.setDisable(false);
+            btOpenWebcam.setDisable(false);
 	        btSavePhoto.setDisable(false);
 	        btUpdate.setDisable(false);
 	        btClear.setDisable(false);
@@ -398,7 +399,7 @@ public class UpdateController implements Initializable {
 	    else {
 	    	Guest guest = userDAO.getGuestBySSN(ssn);
 	    	Timestamp date = guest.getCreateDate();
-	    	Guest updatedGuest = new Guest(1, ssn, fullname, gender, contactNumber, companyName, date, observation, block);    	
+	    	Guest updatedGuest = new Guest(null, ssn, fullname, gender, contactNumber, companyName, date, observation, block);    	
 	    	userDAO.updateGuest(updatedGuest);
 	    	clearFields();
 	    	guiUtil.setLblError(lblErrors, Color.GREEN, "Guest has been UPDATED!");
@@ -512,12 +513,5 @@ public class UpdateController implements Initializable {
 		stopCamera = true;
 		btOpenWebcam.setDisable(false);
 		btSavePhoto.setDisable(true);
-	}
-	
-	private void protectUnknownPhoto() {
-		
-        if (userDAO.findGuestBySSN(txtSSN.getText()) == false && ioUtil.existFile(txtSSN.getText()) == true) {
-        	ioUtil.deletePhoto(txtSSN.getText());
-        }
 	}
 }

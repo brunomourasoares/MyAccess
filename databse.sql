@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `tb_guest`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tb_guest` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` bigint NOT NULL AUTO_INCREMENT,
   `ssn` varchar(11) NOT NULL,
   `fullname` varchar(60) NOT NULL,
   `gender` varchar(45) DEFAULT NULL,
@@ -76,7 +76,7 @@ CREATE TABLE `tb_users` (
   `logged` tinyint NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `appuser_username_UNIQUE` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -85,7 +85,7 @@ CREATE TABLE `tb_users` (
 
 LOCK TABLES `tb_users` WRITE;
 /*!40000 ALTER TABLE `tb_users` DISABLE KEYS */;
-INSERT INTO `tb_users` VALUES (1,'admin','ZcWhePiwFi5V4EJGHNTtmA==','2023-04-15 12:00:00',0,1,'what is your pet\'s name?','1',0),
+INSERT INTO `tb_users` VALUES (1,'admin','ZcWhePiwFi5V4EJGHNTtmA==','2023-04-15 12:00:00',0,1,'what is your pet\'s name?','1',0);
 /*!40000 ALTER TABLE `tb_users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
